@@ -1,33 +1,57 @@
-import { Link, Tabs } from 'expo-router';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { Tabs } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
-import { HeaderButton } from '../../components/HeaderButton';
-import { TabBarIcon } from '../../components/TabBarIcon';
+import { BottomTab } from '~/components/layout/bottom-tab';
 
-export default function TabLayout() {
+const CustomBottomTabs = (props: BottomTabBarProps) => {
+  return <BottomTab {...props} />;
+};
+
+const TabsLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: 'black',
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <HeaderButton />
-            </Link>
-          ),
+    <>
+      <StatusBar style="light" />
+
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          animation: 'shift',
         }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+        tabBar={CustomBottomTabs}>
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: 'Home',
+          }}
+        />
+        <Tabs.Screen
+          name="appointments"
+          options={{
+            title: 'Appt.',
+          }}
+        />
+        <Tabs.Screen
+          name="search"
+          options={{
+            title: 'Search',
+          }}
+        />
+        <Tabs.Screen
+          name="wallet"
+          options={{
+            title: 'Wallet',
+          }}
+        />
+        <Tabs.Screen
+          name="more"
+          options={{
+            title: 'More',
+          }}
+        />
+      </Tabs>
+    </>
   );
-}
+};
+
+export default TabsLayout;
