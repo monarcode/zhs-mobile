@@ -17,8 +17,8 @@ const LabAppointment = () => {
 
   return (
     <ScrollView
-      style={tw`flex-1`}
-      contentContainerStyle={tw`p-6 gap-y-8 bg-[#fbfbfd] pb-16`}
+      style={tw`flex-1 bg-bg`}
+      contentContainerStyle={tw`p-6 gap-y-8 pb-16`}
       showsVerticalScrollIndicator={false}>
       <LabProfile />
       <AboutLab />

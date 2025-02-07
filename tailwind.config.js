@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
@@ -12,13 +14,24 @@ module.exports = {
         },
         light: '#FDFDFD',
         bg: '#F3F5FA',
+        input: '#E9ECF3',
+        inputPlaceholder: '#97A0B4',
       },
       fontFamily: {
-        regular: ['Montserrat_400Regular'],
-        medium: ['Montserrat_500Medium'],
-        semibold: ['Montserrat_600SemiBold'],
+        regular: ['PlusJakartaSans-Regular'],
+        light: ['PlusJakartaSans-Light'],
+        medium: ['PlusJakartaSans-Medium'],
+        semibold: ['PlusJakartaSans-SemiBold'],
+        bold: ['PlusJakartaSans-Bold'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        '.input': 'px-3 h-12 bg-input flex-row items-center justify-start rounded-xl',
+        '.input-placeholder': 'text-sm tracking-normal font-regular text-inputPlaceholder',
+      });
+    }),
+  ],
 };

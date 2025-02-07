@@ -1,6 +1,5 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Tabs } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 
 import { BottomTab } from '~/components/layout/bottom-tab';
 
@@ -11,8 +10,6 @@ const CustomBottomTabs = (props: BottomTabBarProps) => {
 const TabsLayout = () => {
   return (
     <>
-      <StatusBar style="light" />
-
       <Tabs
         screenOptions={{
           headerShown: false,

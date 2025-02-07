@@ -123,11 +123,11 @@ const SliderDot = ({ index }: SliderDotProps) => {
 
   const dotStyle = useAnimatedStyle(() => {
     const inputRange = [(index - 1) * slideWidth, index * slideWidth, (index + 1) * slideWidth];
-    const width = interpolate(scrollX.value, inputRange, [18, 18, 18], 'clamp');
+    const width = interpolate(scrollX.value, inputRange, [7, 14, 7], 'clamp');
     const backgroundColor = interpolateColor(scrollX.value, inputRange, [
-      '#D9D9D9',
-      '#48484a',
-      '#D9D9D9',
+      '#D2D7E2',
+      THEME.colors.primary.main,
+      '#D2D7E2',
     ]);
     return {
       width: withTiming(width, { duration: 300 }),
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   slide: {
     height: '100%',
     backgroundColor: '#fff',
-    borderRadius: 12,
+    borderRadius: 20,
     overflow: 'hidden',
     padding: 18,
     justifyContent: 'center',
@@ -163,10 +163,10 @@ const styles = StyleSheet.create({
     right: 0,
   },
   paginationDot: {
-    height: 6,
+    height: 7,
     borderRadius: 4,
     backgroundColor: THEME.colors.primary.main,
-    marginHorizontal: 4,
+    marginHorizontal: 2,
   },
 });
 

@@ -8,7 +8,7 @@ export type TextProps = BaseTextProps & {
 
 export const Text = ({ children, style, ...props }: TextProps) => {
   return (
-    <BaseText style={tw.style(`font-regular text-sm leading-none`, style)} {...props}>
+    <BaseText style={[tw.style(`font-regular text-sm leading-none`, style)]} {...props}>
       {children}
     </BaseText>
   );

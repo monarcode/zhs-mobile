@@ -1,3 +1,4 @@
 {
-  "exportall.config.folderListener": ["/modules/home/components"]
+  "exportall.config.folderListener": ["/modules/home/components"],
+  "postman.settings.dotenv-detection-notification-visibility": false
 }

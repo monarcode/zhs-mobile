@@ -40,9 +40,11 @@ export const fontSize = {
 } as const;
 
 export const fontFamily = {
-  regular: 'Montserrat_400Regular',
-  medium: 'Montserrat_500Medium',
-  semiBold: 'Montserrat_600SemiBold',
+  regular: 'PlusJakartaSans-Regular',
+  light: 'PlusJakartaSans-Light',
+  bold: 'PlusJakartaSans-Bold',
+  medium: 'PlusJakartaSans-Medium',
+  semiBold: 'PlusJakartaSans-SemiBold',
 } as const;
 
 export const THEME = {

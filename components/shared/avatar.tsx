@@ -15,7 +15,7 @@ export function Avatar({ source, alt, fallback }: Props) {
     <AvatarPrimitive.Root alt={alt}>
       <AvatarPrimitive.Image source={{ uri: source }} />
       <AvatarPrimitive.Fallback>
-        <Text style={tw`font-semibold text-sm`}>{fallback}</Text>
+        <Text style={tw`font-semibold text-sm text-white`}>{fallback}</Text>
       </AvatarPrimitive.Fallback>
     </AvatarPrimitive.Root>
   );

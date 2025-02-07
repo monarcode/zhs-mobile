@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
 import { Image } from 'expo-image';
-import { Link, router } from 'expo-router';
 import { Dimensions, FlatList, Pressable } from 'react-native';
 
 import FavoriteIcon from '~/assets/svg/favorite.svg';
-import RatingIcon from '~/assets/svg/hotel_class.svg';
+import CalendarIcon from '~/assets/svg/icons/calendar-01.svg';
+import RatingIcon from '~/assets/svg/icons/star-gold.svg';
 import { Text, View } from '~/components/shared';
 import tw from '~/tw';
 
@@ -27,35 +27,22 @@ const doctors = () => {
 export const LabsNearYou = () => {
   const renderItem = ({ item }: { item: any }) => {
     return (
-      <View style={tw.style('h-[130px] bg-white p-3 rounded-xl', { width: ITEM_WIDTH })}>
+      <View style={tw.style('h-auto bg-white p-3 rounded-2xl', { width: ITEM_WIDTH })}>
         {/* top section */}
-        <View style={tw`flex-row justify-between border-b border-[#adadad] pb-2`}>
-          <Pressable
-            onPress={() => router.push(`/booking/lab-appointment?lab=${item.id}`)}
-            style={tw`w-[76px] aspect-square rounded-xl overflow-hidden`}>
+        <View style={tw`flex-row justify-between border-[#adadad] pb-2`}>
+          <View style={tw`w-[76px] aspect-square rounded-xl overflow-hidden`}>
             <Image
-              source={require('../../../assets/images/lab-logo.png')}
+              source={require('~/assets/images/company-logo.png')}
               contentFit="cover"
               transition={300}
               style={tw`w-full h-full`}
             />
-          </Pressable>
-          <View style={tw`flex-1 mx-1.5 gap-1`}>
-            <Link
-              href={`/booking/lab-appointment?lab=${item.id}`}
-              style={tw`text-sm font-medium leading-none`}
-              numberOfLines={1}>
-              {item.name}
-            </Link>
-            <Text style={tw`text-primary text-xs font-normal`} numberOfLines={1}>
-              {item.type}
-            </Text>
-
-            <View style={tw`flex-row items-center gap-1`}>
-              <RatingIcon height={16} width={16} />
-              <Text style={tw`text-[#1C1C1E] text-xs font-medium`}>{item.rating}</Text>
-            </View>
           </View>
+          <View style={tw`flex-1 mx-1.5 gap-1`}>
+            <Text style={tw`text-sm font-medium`}>{item.name}</Text>
+            <Text style={tw`text-neutral-400 text-xs font-light`}>2km away</Text>
+          </View>
+
           <Pressable>
             <FavoriteIcon height={24} width={24} />
           </Pressable>
@@ -63,22 +50,26 @@ export const LabsNearYou = () => {
 
         {/* bottom section */}
         <View style={tw`flex-row justify-between items-center flex-1`}>
-          <Text style={tw`text-xs font-medium`}>{item.available_on}</Text>
+          <View style={tw`flex-row items-center gap-x-1`}>
+            <RatingIcon />
 
-          <Text style={tw`text-xs font-medium`}>{item.opening_hours}</Text>
+            <Text style={tw`text-xs font-normal`}>{item.rating}</Text>
+          </View>
+
+          <View style={tw`flex-row items-center gap-x-1`}>
+            <CalendarIcon />
+
+            <Text style={tw`text-xs  font-regular`}>{item.available_on}</Text>
+          </View>
         </View>
       </View>
     );
   };
 
   return (
-    <View style={tw`gap-3 px-5`}>
-      <View style={tw`flex-row justify-between`}>
-        <Text style={tw`text-xs font-semibold leading-none`}>
-          Labs & Diagnostic center near you
-        </Text>
-
-        <Text style={tw`text-[10px] font-medium`}>View more</Text>
+    <View style={tw`gap-y-1`}>
+      <View style={tw`flex-row justify-between px-5`}>
+        <Text style={tw`font-semibold text-base`}>Labs & Diagnostic center near you</Text>
       </View>
 
       <FlatList
@@ -87,7 +78,7 @@ export const LabsNearYou = () => {
         keyExtractor={(_, idx) => idx.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={tw`gap-x-3 rounded-lg`}
+        contentContainerStyle={tw`gap-x-3 rounded-lg px-5`}
       />
     </View>
   );

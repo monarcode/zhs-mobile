@@ -1,4 +1,5 @@
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,7 +12,6 @@ import {
   HospitalsNearYou,
   LabsNearYou,
   PharmaciesNearYou,
-  Specialties,
 } from '~/modules/home/components';
 import { HomeCarousel } from '~/modules/home/components/carousel';
 import tw from '~/tw';
@@ -21,6 +21,8 @@ const Home = () => {
 
   return (
     <>
+      <StatusBar style="dark" />
+
       <Stack.Screen
         options={{
           headerShown: true,
@@ -30,9 +32,9 @@ const Home = () => {
 
       <ScrollView
         style={{ flex: 1 }}
-        contentContainerStyle={tw`bg-[#f6f6f6]`}
+        contentContainerStyle={tw`bg-bg`}
         showsVerticalScrollIndicator={false}>
-        <View style={tw`bg-[#EBEBF0] pt-5 pb-8`}>
+        <View style={tw`py-3`}>
           <HomeCarousel />
         </View>
 
@@ -43,16 +45,14 @@ const Home = () => {
             gap: 28,
           }}>
           <HomeActions />
-          <Specialties />
           <AvailableDoctors />
           <HospitalsNearYou />
-
-          <View style={{ marginBottom: 20 }}>
-            <AdsSlider />
-          </View>
-
           <LabsNearYou />
           <PharmaciesNearYou />
+
+          <View style={{ marginBottom: 0 }}>
+            <AdsSlider />
+          </View>
         </View>
       </ScrollView>
     </>
