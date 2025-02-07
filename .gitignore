@@ -26,3 +26,5 @@ android
 node_modules
 ios
 android
+
+*.apk
